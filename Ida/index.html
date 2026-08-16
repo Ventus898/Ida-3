@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Für Ida Britt ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at top, #3b1b45, #090014);
+    color: white;
+}
+
+/* Sterne */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%,100% {
+        opacity: .2;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Herzen */
+.heart {
+    position: absolute;
+    color: #ff8fcf;
+    font-size: 25px;
+    animation: float 8s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* Hauptkarte */
+
+.container {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card {
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    box-shadow: 0 0 40px rgba(255,100,200,.25);
+    animation: appear 2s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 42px;
+    color: #ffd1eb;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #fff0fa;
+}
+
+p {
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg,#ff5fa2,#ffb6dc);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff5fa2;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display:none;
+}
+
+
+/* FOTO DESIGN */
+
+.photo{
+    margin:25px 0;
+}
+
+.photo img{
+    width:90%;
+    max-width:350px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(255,120,200,.5);
+    transition:.4s;
+}
+
+.photo img:hover{
+    transform:scale(1.05);
+}
+
+.photo p{
+    margin-top:10px;
+    color:#ffe6f5;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 25px;
+    animation: heartFloat 5s linear forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes heartFloat {
+
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1.8);
+        opacity: 0;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="stars"></div>
+
+
+<div class="container">
+
+<div class="card">
+
+<h1>Für Ida Britt ❤️</h1>
+
+<h2>Alles Gute zum 16. Geburtstag 🎂</h2>
+
+<p>
+Heute feiern wir nicht nur deinen besonderen Tag,
+sondern auch unsere ersten <b>10 Monate zusammen</b>. ❤️
+</p>
+
+<br>
+
+<p>
+Die letzten Monate waren etwas ganz Besonderes für mich.
+Wir hatten wunderschöne Momente,
+aber auch schwere Zeiten, die wir gemeinsam geschafft haben.
+</p>
+
+<br>
+
+<p>
+Und egal was war:
+Es gab nichts Besseres in meinem Leben
+als die letzten 10 Monate mit dir, Baby. ❤️
+</p>
+
+
+<button onclick="start()">
+✨ Öffne deine Überraschung ✨
+</button>
+
+
+<p id="next" class="hidden">
+<br><br>
+Eine kleine Reise durch unsere Geschichte beginnt...
+❤️
+</p>
+
+
+</div>
+
+<!-- HIER BEGINNT DIE NEUE GESCHICHTE -->
+
+<div class="card hidden" id="story">
+
+<h1>Unsere Geschichte ❤️</h1>
+
+<p id="storyText"></p>
+
+<button onclick="nextStory()">
+Weiter ✨
+</button>
+
+</div>
+
+
+<div class="card hidden" id="gallery">
+
+<h1>Unsere Erinnerungen ❤️</h1>
+
+<div class="photo">
+
+<img src="bilder/erstes_bild.jpg">
+
+<p>
+das erstes Bild, das du mir geschickt hast (der pickel hihi) ❤️
+</p>
+
+</div>
+
+
+<div class="photo">
+
+<img src="bilder/lustig1.jpg">
+
+<p>
+Ein Moment, bei dem ich lachen muss (sieht lustig aus) 😂
+</p>
+
+</div>
+
+
+<div class="photo">
+
+<img src="bilder/erinnerung1.jpg">
+
+<p>
+Eine Erinnerung, die ich nie vergessen werde (estes bild mit locken so schön) ❤️
+</p>
+
+</div>
+
+
+<button onclick="openLetterPage()">
+Weiter zu deinem Brief 💌
+</button>
+
+</div>
+
+
+<div class="card hidden" id="letter">
+
+<h1>Für dich, Ida Britt ❤️</h1>
+
+<div class="envelope" onclick="openLetter()">
+💌
+</div>
+
+<p id="letterText"></p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HIER ENDET DIE NEUE GESCHICHTE -->
+
+</div>
+
+
+
+<script>
+
+// Sterne erstellen
+
+for(let i=0;i<120;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+star.style.animationDelay=Math.random()*3+"s";
+
+document.querySelector(".stars").appendChild(star);
+
+}
+
+
+// Herzen erstellen
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+document.body.appendChild(heart);
+
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+
+
+},700);
+
+
+
+function start(){
+
+// erste Karte verstecken
+document.querySelector(".container .card").classList.add("hidden");
+
+// Geschichte zeigen
+document.getElementById("story").classList.remove("hidden");
+
+// ersten Text anzeigen
+showStory();
+
+}
+
+let story = [
+"Am 16.10.2025 begann unsere Geschichte ❤️",
+
+"Seit diesem Tag sind jetzt 10 Monate vergangen.",
+
+"Diese Zeit mit dir war die schönste Zeit meines Lebens.",
+
+"Wir hatten wunderschöne Momente, in denen wir zusammen gelacht haben und einfach glücklich waren.",
+
+"Aber wir hatten auch schwere Zeiten.",
+
+"Es gab Momente, die nicht einfach waren, aber wir haben sie gemeinsam geschafft.",
+
+"Und genau das macht uns besonders.",
+
+"Denn egal was passiert: Ich würde jeden einzelnen Moment mit dir noch einmal erleben.",
+
+"Es gab nichts Besseres in meinem Leben als die letzten 10 Monate mit dir, Baby. ❤️"
+];
+
+
+let storyIndex = 0;
+
+
+function showStory(){
+
+let text = story[storyIndex];
+
+let element = document.getElementById("storyText");
+
+element.innerHTML = "";
+
+let i = 0;
+
+let typing = setInterval(()=>{
+
+element.innerHTML += text[i];
+
+i++;
+
+if(i >= text.length){
+clearInterval(typing);
+}
+
+},40);
+
+}
+
+
+function nextStory(){
+
+storyIndex++;
+
+if(storyIndex < story.length){
+
+showStory();
+
+}else{
+
+document.getElementById("story").classList.add("hidden");
+
+document.getElementById("gallery").classList.remove("hidden");
+
+}
+
+}
+
+function openLetterPage(){
+
+document.getElementById("gallery").classList.add("hidden");
+
+document.getElementById("letter").classList.remove("hidden");
+
+}
+
+
+function openLetter(){
+
+createHearts();
+
+document.getElementById("letterText").innerHTML =
+
+`
+Ida, mein Herz ❤️
+<br><br>
+
+ich liebe dich ida und ich hoffe, dass du an deinem wunderschönen Geburtstag ganz viel Spass hast und diesen Tag so sehr geniesst, wie du es verdient hast.
+<br><br>
+
+Wenn ich darüber nachdenke, dass wir schon 10 Monate zusammen sind, kann ich es manchmal kaum glauben. Wir haben in dieser Zeit so viel erlebt – schöne Momente, lustige Momente und auch Zeiten, die nicht immer einfach waren.
+<br><br>
+
+Es gab so viele Augenblicke, die ich niemals vergessen werde. Momente, in denen wir gelacht haben, geredet haben und einfach wir selbst sein konnten.
+<br><br>
+
+Du bist ein Mensch, mit dem ich alles teilen möchte. Ich liebe deine Art zu reden, deine Art zu lachen und deinen Charakter. Genau das macht dich für mich so besonders.
+<br><br>
+
+Ida, ich würde niemals sagen, dass es ein schöneres, cooleres, lustigeres oder verrückteres Mädchen gibt als dich. Du bist auf deine eigene Art einzigartig und genau das liebe ich an dir.
+<br><br>
+
+Auch wenn wir schwere Zeiten hatten, haben wir sie zusammen geschafft. Und genau diese Momente zeigen mir, dass wir etwas Besonderes haben.
+<br><br>
+
+Ich bin so froh, dass ich dich kennenlernen durfte und dass du an meiner Seite bist. Die letzten 10 Monate mit dir waren eine der schönsten Zeiten meines Lebens.
+<br><br>
+
+Ich freue mich auf all die Erinnerungen, die noch vor uns liegen, auf jedes Lachen, jeden schönen Moment und alles, was wir noch zusammen erleben werden.
+<br><br>
+
+Es war verrückt, was alles passiert ist, vor allem am 11. Januar. Aber das ist ja unser kleines Geheimnis. Ich liebe es einfach. MUAHHH ❤️
+<br><br>
+
+Danke, dass du einfach du bist.
+<br><br>
+
+Ich liebe dich über alles ❤️
+<br><br>
+
+Dein Lenny
+`;
+
+}
+
+function createHearts(){
+
+for(let i = 0; i < 30; i++){
+
+let heart = document.createElement("div");
+
+heart.className = "floating-heart";
+
+heart.innerHTML = "❤️";
+
+heart.style.left = Math.random() * 100 + "%";
+
+heart.style.animationDuration = 
+(3 + Math.random() * 3) + "s";
+
+document.body.appendChild(heart);
+
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6000);
+
+}
+
+}
+
+</script>
+
+
+</body>
+</html>
